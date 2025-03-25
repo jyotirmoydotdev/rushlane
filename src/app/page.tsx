@@ -1,103 +1,172 @@
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { cn } from "@/lib/utils";
+import { Locate, Search, Store, StoreIcon } from "lucide-react";
+import { Baloo_2 } from "next/font/google";
 import Image from "next/image";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { BiRestaurant } from "react-icons/bi";
+import { HiOutlineBuildingStorefront } from "react-icons/hi2";
+import { MdStar, MdStart } from "react-icons/md";
+import { TiStarFullOutline } from "react-icons/ti";
+import { Button } from "@/components/ui/button";
+import FoodCard from "@/components/food-card";
+
+const baloo = Baloo_2({
+  weight: '800',
+  display: 'swap',
+})
+
+const trendingFoods = [
+  {
+    title: "Hyderabade Biryani",
+    restaurant: "Briyani And Rolls",
+    rating: 4.5,
+    price: 200,
+    image: "/biryani.png"
+  },
+  {
+    title: "Spicy Chicken Ride",
+    restaurant: "Foodie's World",
+    rating: 4.5,
+    price: 240,
+    image: "/pizza.png"
+  },
+  {
+    title: "Chicken Hakka Noodles",
+    restaurant: "Food Park",
+    rating: 4.5,
+    price: 260,
+    image: "/noodels.png"
+  },
+  {
+    title: "Chicken Cheese Burger",
+    restaurant: "Food Park",
+    rating: 4.5,
+    price: 260,
+    image: "/burger.png"
+  }
+]
+
+
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className=" max-w-7xl mx-auto ">
+      <div className=" relative ">
+        <div className="bg-orange-50 dark:bg-zinc-900 rounded-t-3xl border border-muted shadow-lg">
+          <div className=" absolute top-1/4 left-25 rotate-20">
+            <Image src={"/arrow.png"} width={1920} height={1080} alt="Background" className="h-[5rem] w-auto dark:invert-100 animate-bounce"></Image>
+          </div>
+          <div className=" absolute top-1/5 right-25 scale-x-[-1] -rotate-20">
+            <Image src={"/arrow.png"} width={1920} height={1080} alt="Background" className="h-[5rem] w-auto dark:invert-100 animate-bounce"></Image>
+          </div>
+          <div className="flex gap-3 flex-col py-10">
+            <div className="flex flex-col items-center justify-center text-center gap-2">
+              <div className={cn(baloo.className, "text-8xl font-black text-primary")}>Easy order, easy life</div>
+              <div className="text-base text-muted-foreground">Best food order app in town, only swipe and choose whatever <br />food you want</div>
+            </div>
+            <div className="flex items-center justify-center py-5">
+              <div className="flex gap-2">
+                <Select>
+                  <div className="flex border-primary border-4 rounded-lg">
+                    <div className=" bg-primary flex items-center px-2">
+                      <Locate className=" stroke-white dark:stroke-black" />
+                    </div>
+                    <SelectTrigger className="w-[180px] rounded-none border-none">
+                      <SelectValue placeholder="Select a fruit" className="" />
+                    </SelectTrigger>
+                  </div>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectLabel>Fruits</SelectLabel>
+                      <SelectItem value="apple">Apple</SelectItem>
+                      <SelectItem value="banana">Banana</SelectItem>
+                      <SelectItem value="blueberry">Blueberry</SelectItem>
+                      <SelectItem value="grapes">Grapes</SelectItem>
+                      <SelectItem value="pineapple">Pineapple</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+                <div className="flex border-primary border-4 rounded-lg">
+                  <div className=" bg-primary flex items-center px-2">
+                    <Search className=" stroke-white dark:stroke-black" />
+                  </div>
+                  <Input placeholder="Search for food.." className="rounded-sm border-none outline-none"></Input>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center items-end">
+            <div className=" h-[20rem] w-[20rem] -bottom-5">
+              <Image src={"/biryani.png"} width={320} height={320} alt="Biryani" className=" hover:rotate-[360deg] transition-all hover:scale-105 duration-500"></Image>
+            </div>
+            <div className=" h-[25rem] w-[25rem]">
+              <Image src={"/pizza.png"} width={400} height={400} alt="Pizza" className=" hover:rotate-[360deg] transition-all hover:scale-105 duration-500"></Image>
+            </div>
+            <div className=" h-[20rem] w-[20rem]">
+              <Image src={"/noodels.png"} width={320} height={320} alt="Noodles" className=" hover:rotate-[360deg] transition-all hover:scale-105 duration-500"></Image>
+            </div>
+          </div>
+          <div className="bg-primary w-full h-[12rem] flex items-center justify-around text-white py-5">
+            <div className="flex flex-col items-center">
+              <div className="text-5xl font-extrabold">100+</div>
+              <div className="text-lg">Trusted Customers</div>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="text-5xl font-extrabold">24/7</div>
+              <div className="text-lg">Fast Delivery</div>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="text-5xl font-extrabold">4.8/5</div>
+              <div className="text-lg">Customer Ratings</div>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="text-5xl font-extrabold">31+</div>
+              <div className="text-lg"> Restaurants</div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className=" mt-10">
+          <div className="flex flex-col pb-5">
+            <div className={cn(baloo.className, " text-3xl font-semibold flex gap-2 items-center")}>
+              <span>
+                Trending
+              </span>
+              <span className=" text-primary">
+                Foods
+              </span>
+            </div>
+            <div className="text-muted-foreground text-sm">
+              Top foods serving from the best resuturants in the town
+            </div>
+          </div>
+          <div className="">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+              {
+                trendingFoods.map((food, i) => (
+                  FoodCard(food.title, food.restaurant, food.rating, food.price, food.image, i)
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
