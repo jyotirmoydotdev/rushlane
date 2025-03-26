@@ -13,7 +13,7 @@ import { BiHide, BiShow } from 'react-icons/bi';
 const page = () => {
     const [passwordHide, setPasswordHide] = useState(true)
     return (
-        <div className="w-screen sm:w-sm">
+        <div className="w-screen sm:w-sm mx-auto py-0 sm:py-5">
             <div className="flex flex-col justify-between gap-10 p-6">
                 <div className="flex flex-col gap-3">
                     <div className="text-center pb-2">

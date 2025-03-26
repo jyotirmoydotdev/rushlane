@@ -93,7 +93,7 @@ export const data: {
           link: "#"
         },
         {
-          label: "Press",
+          label: "Press Kit",
           link: "#"
         }
       ]
@@ -118,7 +118,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <main className="min-h-screen flex flex-col">
-            <div className="flex-1 w-full flex flex-col gap-0 sm:gap-5 ">
+            <div className="flex-1 w-full flex flex-col gap-0 ">
               <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16 bg-orange-50 dark:bg-zinc-900">
                 <div className="w-full max-w-7xl flex justify-between items-center p-3 px-5 text-sm">
                   <div className="flex gap-2 items-center font-semibold">
@@ -152,7 +152,7 @@ export default function RootLayout({
                 <div className='flex justify-center px-5 pt-10'>
                   <div className="grid grid-cols-1 sm:grid-cols-2 max-w-7xl w-full pb-5 sm:pb-10 border-b">
                     <div className=' flex flex-col justify-between pb-0 sm:pb-5'>
-                      <div className="flex flex-col" >
+                      <div className="flex flex-col gap-2" >
                         <div className="flex gap-2 items-center font-semibold">
                           <Image src={"/icon.png.png"} width={200} height={250} className="w-10 h-full" alt="My Meghalaya logo" />
                           <Link href={"/"} className="flex">
@@ -161,7 +161,7 @@ export default function RootLayout({
                             </span>
                           </Link>
                         </div>
-                        <div className="sm:py-3 pb-3 text-xs sm:text-sm text-gray-500 w-1/2 ">
+                        <div className="sm:py-3 pb-3 text-xs sm:text-sm text-gray-500 w-3/4 sm:w-1/2 ">
                           Food Order and Delivery Application for everyone who always hungry and don't waste much time and money.
                         </div>
                       </div>

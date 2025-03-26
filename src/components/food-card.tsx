@@ -14,14 +14,14 @@ const FoodCard = (
     index: number
 ) => {
     return (
-        <Card className="py-4 gap-4" key={index}>
+        <Card className="py-4 gap-4 hover:scale-105 transition-all hover:shadow-xl" key={index}>
             <CardContent className=" px-4">
                 <div className=" h-[10rem] overflow-hidden bg-muted border border-muted rounded-md relative">
                     <div className=" flex items-center gap-1 absolute bg-green-500 text-white rounded-sm px-1 top-2 left-2 text-sm">
                         <div className=""> <TiStarFullOutline className="" /></div>
                         <div className=" font-semibold">{rating}</div>
                     </div>
-                    <Image src={image} width={240} height={240} alt="Biryani" className="rounded-lg h-[10rem] object-cover"></Image>
+                    <Image src={image} width={240} height={240} alt="Biryani" className="rounded-lg h-[10rem] w-full object-cover"></Image>
                 </div>
             </CardContent>
             <CardHeader className="px-4">
