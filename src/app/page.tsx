@@ -20,6 +20,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 import { BiRestaurant } from "react-icons/bi";
 import { HiOutlineBuildingStorefront } from "react-icons/hi2";
 import { MdStar, MdStart } from "react-icons/md";
@@ -296,7 +303,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="flex justify-center items-end ">
+          <div className="grid grid-cols-3 justify-items-center items-end ">
             <div className="h-[8rem] w-[8rem] sm:h-[20rem] sm:w-[20rem] -bottom-5">
               <Image src={"/biryani.png"} width={320} height={320} alt="Biryani" className="hover:rotate-[360deg] transition-all hover:scale-105 duration-500"></Image>
             </div>
@@ -455,7 +462,26 @@ export default function Home() {
               Top resuturants in the town
             </div>
           </div>
-          <div className=" w-full overflow-x-scroll">
+          <Carousel>
+          <CarouselContent >
+            {
+                topResuturants.map((res, i) => (
+                  <CarouselItem key={i} className=" basis-1/2 sm:basis-1/3 md:basis-1/6">
+                  <div className="flex flex-col items-center gap-1">
+                    <div className=" border rounded-full border-muted overflow-hidden w-[150px] h-[150px]">
+                      <Image src={res.img} className=" w-full h-full object-cover" width={200} height={200} alt={res.title}></Image>
+                    </div>
+                    <div className=" text-xl font-semibold line-clamp-1">{res.title}</div>
+                  </div>
+                  </CarouselItem>
+                ))
+              }
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+
+          {/* <div className=" w-full overflow-x-scroll">
             <div className="flex gap-5">
               {
                 topResuturants.map((res, i) => (
@@ -468,7 +494,7 @@ export default function Home() {
                 ))
               }
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="mt-10  py-0 sm:py-4 px-0 sm:px-4">
           <div className="flex flex-col pb-5">
