@@ -260,7 +260,7 @@ export default function Home() {
   return (
     <div className="max-w-7xl mx-auto py-2 sm:py-5 px-2">
       <div className="">
-        <div className="relative bg-gradient-to-r from-orange-50 to-yellow-50 dark:from-zinc-900 dark:to-zinc-800 rounded-t-3xl border border-muted shadow-lg">
+        <div className="relative rounded-t-3xl border border-muted shadow-lg bg-gradient-to-r from-orange-50/10 to-yellow-50 dark:from-zinc-900 dark:to-zinc-800 ">
           <div className="absolute top-[8rem] sm:top-1/4 left-0 sm:left-25 rotate-20">
             <Image src={"/arrow.png"} width={1920} height={1080} alt="Background" className="h-[2rem] sm:h-[5rem] pointer-events-none w-auto dark:invert-100 animate-bounce"></Image>
           </div>
@@ -433,20 +433,24 @@ export default function Home() {
               A Taste of Perfection, Recommended by Our Chefs
             </div>
           </div>
-          <div className=" w-full overflow-x-scroll">
-            <div className="flex gap-5">
+          <Carousel>
+          <CarouselContent >
               {
                 chefsRecommendations.map((chef, i) => (
-                  <div className="flex flex-col items-center gap-1" key={i}>
+                  <CarouselItem key={i} className=" basis-1/2 sm:basis-1/3 md:basis-1/6">
+                  <div className="flex flex-col items-center gap-1">
                     <div className=" border rounded-full border-muted overflow-hidden w-[150px] h-[150px]">
                       <Image src={chef.img} className=" w-full h-full object-cover" width={200} height={200} alt={chef.title}></Image>
                     </div>
                     <div className=" text-xl font-semibold line-clamp-1">{chef.title}</div>
                   </div>
+                  </CarouselItem>
                 ))
               }
-            </div>
-          </div>
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+        </Carousel>
         </div>
         <div className="mt-10  py-0 sm:py-4 px-0 sm:px-4">
           <div className="flex flex-col pb-5">
